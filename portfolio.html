@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Animated Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+ 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background-color: #111;
+            color: #fff;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            padding: 15px 30px;
+            transition: background-color 0.5s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+            font-size: 20px;
+            position: relative;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        nav ul li:hover {
+            color: #ff7f50;
+        }
+
+        nav ul li::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #ff7f50;
+            transition: width 0.4s;
+        }
+
+        nav ul li:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px;
+            position: relative;
+        }
+
+        #about {
+            height: 100vh;
+            background-color: #333;
+        }
+
+        #skills {
+            height: 120vh;
+            background-color: #444;
+        }
+
+        #experience {
+            background-color: #555;
+        }
+
+        #education {
+            background-color: #666;
+        }
+
+        #contact {
+            background-color: #777;
+        }
+
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .scroll-animation.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+       
+
+        #myImage {
+            position: fixed;
+            z-index: 100;
+            height: 400px;
+            width: 350px;
+           border-radius: 50%;
+           top: 20%;
+        }
+
+        #Intro{
+            text-align: center;
+            font-family: "Caveat", cursive;
+        }
+        @media (max-width: 725px) {
+            #myImage {
+                z-index: 0 !important;
+            }
+
+        }
+   img{
+    background: transparent; 
+    filter: drop-shadow(0 0 100px greenyellow);
+   }
+   #hand{
+    height: 50vh;
+   }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item firstItem">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item SecondItem">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item ThirdItem">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item FourthItem">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item FifthItem">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <img id="myImage" src="./cartoon.png" alt="">
+
+    <section id="about" class="scroll-animation" style="display: flex; justify-content: space-evenly;">
+        <div></div>
+        <div id="Intro">
+            <h1>I am Kawshik Roy</h1>
+            <h2>Full Stack Web Developer</h2>
+        </div>
+    </section>
+
+    <section id="skills" class="scroll-animation">
+       
+        <img style="margin-left: 79px;" id="hand" src="./hand-3.png" alt="">
+        <div>
+            <h2 class="skilltext" style="position: relative;z-index: -100;    right: 194px;top: -146px;">HTML</h2>
+            <h2 class="skilltext" style="left: -302px;
+            top: -126px;
+            position: relative;z-index: -100;">CSS</h2>
+            <h2 class="skilltext" style="left: -302px;
+            top: -36.5218vh;
+            position: relative;z-index: -100;">JS</h2>
+            </div>
+            <h2 class="skilltext" style="left: -302px;
+            top: -36.5218vh ;z-index: -100;;
+            position: relative;">JS</h2>
+            </div>
+            
+    </section>
+
+    <section id="experience" class="scroll-animation">
+        <h1>Experience</h1>
+    </section>
+
+    <section id="education" class="scroll-animation">
+        <h1>Education</h1>
+    </section>
+
+    <section id="contact" class="scroll-animation">
+        <h1>Contact Me</h1>
+    </section>
+    <script>
+        const sections = document.querySelectorAll('.scroll-animation');
+        window.addEventListener('scroll', () => {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const triggerPoint = window.innerHeight - 150;
+                if (sectionTop < triggerPoint) {
+                    section.classList.add('visible');
+                } else {
+                    section.classList.remove('visible');
+                }
+            });
+        });
+    </script>
+
+    <script src="./anime.min.js"></script>
+    <script>
+       
+
+        anime({
+            targets: '.firstItem, .SecondItem, .ThirdItem, .FourthItem, .FifthItem',
+            translateX: 60,
+            duration: 3000
+        });
+
+        anime({
+                    targets: '#Intro',
+                    easing: 'easeInOutQuad',
+                    scale: {
+    value: 1.5,
+    duration: 1600,
+  }
+                });
+    </script>
+    <script>
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom >= 0;
+        }
+
+        function handleScroll() {
+            if (isInViewport(document.getElementById('about'))) {
+                anime({
+                    targets: '#myImage',
+                    left: '5vw',
+                    easing: 'easeInOutQuad',
+                    rotate: {
+    value: 360,
+    duration: 1800,
+    easing: 'easeInOutQuad'
+  },scale: {
+    value: 1.2,
+    duration: 1600,
+    delay: 800,
+    easing: 'easeInOutQuart'
+  }
+                },
+                
+            );
+            }
+
+            else if (isInViewport(document.getElementById('skills'))) {
+                anime({
+                    targets: '#myImage',
+                    left: '70vw',
+                    easing: 'easeInOutQuad',
+                    scale: {
+    value: 0,
+    duration: 1600,
+    delay: 800,
+    easing: 'easeInOutQuart'
+  }
+  
+                });
+
+                anime({
+  targets: '#hand',
+  translateY: 100,
+  direction: 'alternate',
+  scale: .5,
+  filter: [
+    { value: 'drop-shadow(0 0 50px greenyellow)', duration: 50 },  
+    { value: 'drop-shadow(0 0 100px greenyellow)', duration: 200 },  
+  ],
+});
+
+anime({
+    top:"2vh",
+  targets: '.skilltext',
+  translateY: 100,
+  direction: 'alternate',
+  scale: 0.5,
+  filter: [
+    { value: 'drop-shadow(0 0 50px greenyellow)', duration: 50 },  
+    { value: 'drop-shadow(0 0 100px greenyellow)', duration: 200 },  
+  ],
+});
+            }
+
+            else if (isInViewport(document.getElementById('experience'))) {
+                anime({
+                    targets: '#myImage',
+                    left: '5vw', 
+                    easing: 'easeInOutQuad'
+                });
+            }
+            else if (isInViewport(document.getElementById('education'))) {
+                anime({
+                    targets: '#myImage',
+                    left: '70vw',
+                    easing: 'easeInOutQuad'
+                });
+            }
+
+            else if (isInViewport(document.getElementById('contact'))) {
+                anime({
+                    targets: '#myImage',
+                    left: '5vw', 
+                    easing: 'easeInOutQuad'
+                });
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
